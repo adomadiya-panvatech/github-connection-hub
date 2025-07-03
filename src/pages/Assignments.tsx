@@ -66,6 +66,12 @@ const Assignments = () => {
     }
   ];
 
+  const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+    if (typeof checked === 'boolean') {
+      setShowCardPreviews(checked);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -74,7 +80,7 @@ const Assignments = () => {
           <div className="flex items-center gap-2">
             <Checkbox
               checked={showCardPreviews}
-              onCheckedChange={setShowCardPreviews}
+              onCheckedChange={handleCheckboxChange}
             />
             <label className="text-sm">Show card previews</label>
           </div>

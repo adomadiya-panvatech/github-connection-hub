@@ -27,6 +27,12 @@ const GuidanceRules = () => {
     { id: 15, name: 'EAT HEALTHY - anytime_tip', updated: '2021.03.21', state: 'Active', conditions: 1, actions: 1 }
   ];
 
+  const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+    if (typeof checked === 'boolean') {
+      setHideExpired(checked);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -47,7 +53,7 @@ const GuidanceRules = () => {
         <div className="flex items-center gap-2 mt-4">
           <Checkbox
             checked={hideExpired}
-            onCheckedChange={setHideExpired}
+            onCheckedChange={handleCheckboxChange}
           />
           <label className="text-sm">Hide Expired</label>
         </div>
