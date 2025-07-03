@@ -2,118 +2,129 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Users, FileText, MessageSquare, Bell, ArrowRight, Sparkles } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { FileText, Database, Tags, Image, Users, Settings } from 'lucide-react';
 
 const Index = () => {
-  const features = [
-    {
-      icon: Users,
-      title: "User Management",
-      description: "Manage users, roles, and permissions with advanced controls"
-    },
-    {
-      icon: FileText,
-      title: "Content Control",
-      description: "Create and moderate platform content seamlessly"
-    },
-    {
-      icon: MessageSquare,
-      title: "Community Features",
-      description: "Build and manage thriving communities"
-    },
-    {
-      icon: Bell,
-      title: "Real-time Notifications",
-      description: "Stay updated with instant notifications"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16 lg:py-24">
-        <div className="text-center space-y-8 max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">Welcome to the Future</span>
-          </div>
-
-          {/* Main Heading */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-              Welcome to{' '}
-              <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                Tovi Frontend
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              A comprehensive platform for managing users, content, and communities with modern design and powerful features
-            </p>
-          </div>
-
-          {/* CTA Button */}
-          <div className="pt-4">
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="border-b border-gray-200 bg-white">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center font-bold text-xl">
+                µ
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-black">TOVI</h1>
+                <p className="text-gray-600">Content Management System</p>
+              </div>
+            </div>
             <Link to="/dashboard">
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                Go to Dashboard
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button className="bg-black text-white hover:bg-gray-800">
+                Access Dashboard
               </Button>
             </Link>
           </div>
         </div>
+      </header>
 
-        {/* Features Grid */}
-        <div className="mt-20 lg:mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to manage your platform effectively
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature, index) => (
-              <Card key={feature.title} className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl font-semibold">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center pt-0">
-                  <CardDescription className="text-base leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-black mb-4">
+            Powerful Content Management
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Organize, manage, and deliver your content with our comprehensive platform
+          </p>
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-20 lg:mt-32">
-          <Card className="bg-primary text-primary-foreground border-0">
-            <CardContent className="py-12">
-              <div className="grid gap-8 sm:grid-cols-3 text-center">
-                <div>
-                  <div className="text-4xl md:text-5xl font-bold mb-2">10K+</div>
-                  <div className="text-primary-foreground/80 text-lg">Active Users</div>
-                </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-bold mb-2">50K+</div>
-                  <div className="text-primary-foreground/80 text-lg">Content Items</div>
-                </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-bold mb-2">99.9%</div>
-                  <div className="text-primary-foreground/80 text-lg">Uptime</div>
-                </div>
-              </div>
+        {/* Feature Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <FileText className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">Content Library</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Manage articles, videos, tips, and HTML cards in one centralized location
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <Database className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">Collections</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Organize content into themed collections for better organization
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <Tags className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">Taxonomy</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Create categories and tags to classify and organize your content
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <Image className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">Media Library</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Store and manage videos, audio files, and images efficiently
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <Users className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">User Management</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Control user access and permissions across your platform
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-gray-200 hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <Settings className="w-12 h-12 text-black mb-4" />
+              <CardTitle className="text-black">Advanced Tools</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Powerful tools for content creation, moderation, and analytics
+              </p>
             </CardContent>
           </Card>
         </div>
-      </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <Link to="/dashboard">
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-lg">
+              Get Started
+            </Button>
+          </Link>
+        </div>
+      </main>
     </div>
   );
 };

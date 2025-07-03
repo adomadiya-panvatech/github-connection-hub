@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
@@ -10,10 +11,22 @@ import UserList from '../Users/UserList';
 import ContentList from '../Content/ContentList';
 import CommunityList from '../Community/CommunityList';
 import NotificationList from '../Notifications/NotificationList';
-import { Users, FileText, MessageSquare, Bell, LogOut, Menu } from 'lucide-react';
+import { 
+  Users, 
+  FileText, 
+  MessageSquare, 
+  Bell, 
+  LogOut, 
+  Menu, 
+  Database, 
+  Tags, 
+  Image,
+  ArrowRight 
+} from 'lucide-react';
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('login');
 
   if (!user) {
@@ -47,9 +60,40 @@ const Dashboard = () => {
     );
   }
 
+  const cmsItems = [
+    {
+      title: 'Content Library',
+      description: 'Manage articles, videos, tips, and HTML cards',
+      icon: FileText,
+      path: '/cms/content-library',
+      color: 'bg-blue-500/10 text-blue-600'
+    },
+    {
+      title: 'Content Collections',
+      description: 'Organize content into themed collections',
+      icon: Database,
+      path: '/cms/content-collections',
+      color: 'bg-green-500/10 text-green-600'
+    },
+    {
+      title: 'Taxonomy',
+      description: 'Create categories and tags for content',
+      icon: Tags,
+      path: '/cms/taxonomy',
+      color: 'bg-purple-500/10 text-purple-600'
+    },
+    {
+      title: 'Media Library',
+      description: 'Manage videos, audio files, and images',
+      icon: Image,
+      path: '/cms/media-library',
+      color: 'bg-orange-500/10 text-orange-600'
+    }
+  ];
+
   const tabItems = [
+    { value: 'cms', label: 'Content Management', icon: FileText },
     { value: 'users', label: 'Users', icon: Users },
-    { value: 'content', label: 'Content', icon: FileText },
     { value: 'communities', label: 'Communities', icon: MessageSquare },
     { value: 'notifications', label: 'Notifications', icon: Bell },
   ];
@@ -85,7 +129,7 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="users" className="space-y-8">
+        <Tabs defaultValue="cms" className="space-y-8">
           {/* Enhanced Tab Navigation */}
           <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-2 shadow-sm">
             <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-2 bg-transparent">
@@ -104,6 +148,53 @@ const Dashboard = () => {
 
           {/* Tab Content */}
           <div className="space-y-6">
+            <TabsContent value="cms" className="space-y-6 mt-0">
+              <Card className="shadow-lg border-0 bg-card/50 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Content Management System</CardTitle>
+                      <p className="text-sm text-muted-foreground">Manage your content, collections, and media</p>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {cmsItems.map((item) => (
+                      <Card 
+                        key={item.path}
+                        className="border-gray-200 hover:shadow-md transition-all cursor-pointer group"
+                        onClick={() => navigate(item.path)}
+                      >
+                        <CardContent className="p-6">
+                          <div className="flex items-start gap-4">
+                            <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center`}>
+                              <item.icon className="w-6 h-6" />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                {item.title}
+                              </h3>
+                              <p className="text-sm text-gray-600 mb-3">
+                                {item.description}
+                              </p>
+                              <div className="flex items-center text-blue-600 text-sm font-medium">
+                                Open
+                                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
             <TabsContent value="users" className="space-y-6 mt-0">
               <Card className="shadow-lg border-0 bg-card/50 backdrop-blur-sm">
                 <CardHeader className="pb-4">
@@ -119,25 +210,6 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <UserList />
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="content" className="space-y-6 mt-0">
-              <Card className="shadow-lg border-0 bg-card/50 backdrop-blur-sm">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
-                      <FileText className="w-5 h-5 text-green-600" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl">Content Management</CardTitle>
-                      <p className="text-sm text-muted-foreground">Create and moderate platform content</p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ContentList />
                 </CardContent>
               </Card>
             </TabsContent>
