@@ -12,7 +12,11 @@ import {
   MessageSquare, 
   Bell, 
   LogOut,
-  ChevronDown
+  ChevronDown,
+  Target,
+  Award,
+  Calendar,
+  Trophy
 } from 'lucide-react';
 
 interface CMSLayoutProps {
@@ -32,6 +36,16 @@ const CMSLayout: React.FC<CMSLayoutProps> = ({ children }) => {
         { label: 'Content Collections', path: '/cms/content-collections', icon: Database },
         { label: 'Taxonomy', path: '/cms/taxonomy', icon: Tags },
         { label: 'Media Library', path: '/cms/media-library', icon: Image },
+      ]
+    },
+    {
+      title: 'Goals',
+      icon: Target,
+      items: [
+        { label: 'Goal Templates', path: '/cms/goal-templates', icon: Target },
+        { label: 'Goal Categories', path: '/cms/goal-categories', icon: Award },
+        { label: 'Plan Templates', path: '/cms/plan-templates', icon: Calendar },
+        { label: 'Challenges', path: '/cms/challenges', icon: Trophy },
       ]
     },
     {

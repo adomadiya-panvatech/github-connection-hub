@@ -11,6 +11,10 @@ import ContentLibrary from './pages/ContentLibrary';
 import ContentCollections from './pages/ContentCollections';
 import Taxonomy from './pages/Taxonomy';
 import MediaLibrary from './pages/MediaLibrary';
+import GoalTemplates from './pages/GoalTemplates';
+import GoalCategories from './pages/GoalCategories';
+import PlanTemplates from './pages/PlanTemplates';
+import Challenges from './pages/Challenges';
 
 function App() {
   return (
@@ -40,6 +44,26 @@ function App() {
             <Route path="/cms/media-library" element={
               <CMSLayout>
                 <MediaLibrary />
+              </CMSLayout>
+            } />
+            <Route path="/cms/goal-templates" element={
+              <CMSLayout>
+                <GoalTemplates />
+              </CMSLayout>
+            } />
+            <Route path="/cms/goal-categories" element={
+              <CMSLayout>
+                <GoalCategories />
+              </CMSLayout>
+            } />
+            <Route path="/cms/plan-templates" element={
+              <CMSLayout>
+                <PlanTemplates />
+              </CMSLayout>
+            } />
+            <Route path="/cms/challenges" element={
+              <CMSLayout>
+                <Challenges />
               </CMSLayout>
             } />
             
