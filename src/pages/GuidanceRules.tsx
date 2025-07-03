@@ -1,13 +1,17 @@
-
 import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Checkbox } from '../components/ui/checkbox';
+import NewGuidanceRuleDialog from '../components/GuidanceRules/NewGuidanceRuleDialog';
+import EditGuidanceRuleDialog from '../components/GuidanceRules/EditGuidanceRuleDialog';
 
 const GuidanceRules = () => {
   const [hideExpired, setHideExpired] = useState(true);
+  const [showNewRuleDialog, setShowNewRuleDialog] = useState(false);
+  const [showEditDialog, setShowEditDialog] = useState(false);
+  const [selectedRule, setSelectedRule] = useState(null);
 
   const mockRules = [
     { id: 1, name: '9 to 5_content', updated: '2022.03.02', state: 'Active', conditions: 1, actions: 1 },
@@ -33,11 +37,19 @@ const GuidanceRules = () => {
     }
   };
 
+  const handleRuleClick = (rule: any) => {
+    setSelectedRule(rule);
+    setShowEditDialog(true);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-black">Guidance Rules</h1>
-        <Button className="bg-green-600 hover:bg-green-700 text-white">
+        <Button 
+          className="bg-green-600 hover:bg-green-700 text-white"
+          onClick={() => setShowNewRuleDialog(true)}
+        >
           + New Rule
         </Button>
       </div>
@@ -83,7 +95,10 @@ const GuidanceRules = () => {
                   {mockRules.map((rule) => (
                     <TableRow key={rule.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <TableCell>
-                        <span className="text-blue-600 hover:underline cursor-pointer">
+                        <span 
+                          className="text-blue-600 hover:underline cursor-pointer"
+                          onClick={() => handleRuleClick(rule)}
+                        >
                           {rule.name}
                         </span>
                       </TableCell>
@@ -135,6 +150,16 @@ const GuidanceRules = () => {
           </Card>
         </TabsContent>
       </Tabs>
+
+      <NewGuidanceRuleDialog 
+        open={showNewRuleDialog} 
+        onOpenChange={setShowNewRuleDialog}
+      />
+      <EditGuidanceRuleDialog 
+        open={showEditDialog} 
+        onOpenChange={setShowEditDialog}
+        rule={selectedRule}
+      />
     </div>
   );
 };

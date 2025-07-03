@@ -63,6 +63,22 @@ const CMSLayout: React.FC<CMSLayoutProps> = ({ children }) => {
       icon: Bell,
       items: [
         { label: 'Guidance', path: '/cms/guidance-rules', icon: Bell },
+        { label: 'Personal', path: '/cms/personalization-rules', icon: Bell },
+      ]
+    },
+    {
+      title: 'People',
+      icon: Users,
+      items: [
+        { label: 'Users', path: '/cms/users', icon: Users },
+        { label: 'Companies', path: '/cms/companies', icon: Users },
+      ]
+    },
+    {
+      title: 'Settings',
+      icon: Bell,
+      items: [
+        { label: 'Settings', path: '/cms/settings', icon: Bell },
       ]
     }
   ];

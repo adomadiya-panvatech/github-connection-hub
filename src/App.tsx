@@ -19,6 +19,11 @@ import Assignments from './pages/Assignments';
 import CommunityGroups from './pages/CommunityGroups';
 import CommunityModeration from './pages/CommunityModeration';
 import GuidanceRules from './pages/GuidanceRules';
+import PersonalizationRules from './pages/PersonalizationRules';
+import Settings from './pages/Settings';
+import Profile from './pages/Profile';
+import Password from './pages/Password';
+import Companies from './pages/Companies';
 
 function App() {
   return (
@@ -97,6 +102,35 @@ function App() {
             <Route path="/cms/guidance-rules" element={
               <CMSLayout>
                 <GuidanceRules />
+              </CMSLayout>
+            } />
+            <Route path="/cms/personalization-rules" element={
+              <CMSLayout>
+                <PersonalizationRules />
+              </CMSLayout>
+            } />
+            
+            {/* Settings Routes */}
+            <Route path="/cms/settings" element={
+              <CMSLayout>
+                <Settings />
+              </CMSLayout>
+            } />
+            <Route path="/cms/settings/profile" element={
+              <CMSLayout>
+                <Profile />
+              </CMSLayout>
+            } />
+            <Route path="/cms/settings/password" element={
+              <CMSLayout>
+                <Password />
+              </CMSLayout>
+            } />
+            
+            {/* Companies Route */}
+            <Route path="/cms/companies" element={
+              <CMSLayout>
+                <Companies />
               </CMSLayout>
             } />
             
