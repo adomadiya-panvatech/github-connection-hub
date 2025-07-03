@@ -49,12 +49,20 @@ const CMSLayout: React.FC<CMSLayoutProps> = ({ children }) => {
       ]
     },
     {
-      title: 'Management',
+      title: 'Tools',
       icon: Users,
       items: [
-        { label: 'Users', path: '/dashboard', icon: Users },
-        { label: 'Communities', path: '/dashboard', icon: MessageSquare },
-        { label: 'Notifications', path: '/dashboard', icon: Bell },
+        { label: 'Survey Builder', path: '/cms/surveys', icon: MessageSquare },
+        { label: 'Assignments', path: '/cms/assignments', icon: Calendar },
+        { label: 'Community Groups', path: '/cms/community-groups', icon: Users },
+        { label: 'Community Moderation', path: '/cms/community-moderation', icon: Bell },
+      ]
+    },
+    {
+      title: 'Rules',
+      icon: Bell,
+      items: [
+        { label: 'Guidance', path: '/cms/guidance-rules', icon: Bell },
       ]
     }
   ];

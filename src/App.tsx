@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
@@ -15,6 +14,11 @@ import GoalTemplates from './pages/GoalTemplates';
 import GoalCategories from './pages/GoalCategories';
 import PlanTemplates from './pages/PlanTemplates';
 import Challenges from './pages/Challenges';
+import Surveys from './pages/Surveys';
+import Assignments from './pages/Assignments';
+import CommunityGroups from './pages/CommunityGroups';
+import CommunityModeration from './pages/CommunityModeration';
+import GuidanceRules from './pages/GuidanceRules';
 
 function App() {
   return (
@@ -64,6 +68,35 @@ function App() {
             <Route path="/cms/challenges" element={
               <CMSLayout>
                 <Challenges />
+              </CMSLayout>
+            } />
+            
+            {/* Tools Routes */}
+            <Route path="/cms/surveys" element={
+              <CMSLayout>
+                <Surveys />
+              </CMSLayout>
+            } />
+            <Route path="/cms/assignments" element={
+              <CMSLayout>
+                <Assignments />
+              </CMSLayout>
+            } />
+            <Route path="/cms/community-groups" element={
+              <CMSLayout>
+                <CommunityGroups />
+              </CMSLayout>
+            } />
+            <Route path="/cms/community-moderation" element={
+              <CMSLayout>
+                <CommunityModeration />
+              </CMSLayout>
+            } />
+            
+            {/* Rules Routes */}
+            <Route path="/cms/guidance-rules" element={
+              <CMSLayout>
+                <GuidanceRules />
               </CMSLayout>
             } />
             
